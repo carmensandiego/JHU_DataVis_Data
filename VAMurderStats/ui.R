@@ -13,22 +13,40 @@ library(shiny)
 shinyUI(fluidPage(
   
   # Application title
-  titlePanel("Virginia Murder and Non Negligent Manslaughter"),
+  titlePanel("Estimated Murder and Non Negligent Manslaughter in Virginia"),
   
   # Sidebar with a slider input for number of bins 
   sidebarLayout(
     sidebarPanel(
        sliderInput("slider1",
+                   "Aggravated Assault:",
+                   min = 5000,
+                   max = 13000,
+                   value = 5000),
+       checkboxInput("ShowModel1", "Show/Hide Linear Model", value = TRUE),
+       
+       sliderInput("slider2",
                    "Year:",
                    min = 1960,
                    max = 2014,
-                   value = 1960)
+                   value = 1960),
+      sliderInput("slider3",
+                  "Bootstrap Resample:",
+                  min = 0,
+                  max = 1000,
+                  value = 0)
     ),
     
     # Show a plot of the generated distribution
     mainPanel(
+      plotOutput("plot1"),
+      plotOutput("plot2"),
+      h3("Predicted Murder/Manslaughter Estimate from Model 1:"), 
+      textOutput("pred1"),
       h3("Year:"),
-       textOutput("text1")
+      textOutput("year1"),
+      h3("Sum of Estimated Murders and Non Negligent Manslaughter (from 1960 to selected year):"),
+      textOutput("sumyr")
     )
   )
 ))
