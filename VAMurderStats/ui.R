@@ -34,19 +34,26 @@ shinyUI(fluidPage(
                   "Bootstrap Resample:",
                   min = 0,
                   max = 1000,
-                  value = 0)
+                  value = 0),
+      actionButton("show", "Help")
     ),
     
     # Show a plot of the generated distribution
     mainPanel(
       plotOutput("plot1"),
-      plotOutput("plot2"),
       h3("Predicted Murder/Manslaughter Estimate from Model 1:"), 
       textOutput("pred1"),
       h3("Year:"),
       textOutput("year1"),
-      h3("Sum of Estimated Murders and Non Negligent Manslaughter (from 1960 to selected year):"),
-      textOutput("sumyr")
+      h3("Total Estimated Murders and Non Negligent Manslaughter (from 1960 to selected year):"),
+      textOutput("sumyr"),
+      plotOutput("plot2")
+      # tabsetPanel(
+      #   # using iframe along with tags() within tab to display pdf with scroll, height and width could be adjusted
+      #   tabPanel("Reference", 
+      #            tags$iframe(style="height:400px; width:100%; scrolling=yes", 
+      #                        src="https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf")
+      # ))
     )
   )
 ))

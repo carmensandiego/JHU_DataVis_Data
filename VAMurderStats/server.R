@@ -51,12 +51,24 @@ shinyServer(function(input, output) {
   points(input$slider2, yearselect(), col="blue", pch=16, cex=2)
   
   })
-  output$plot2 <- renderPlot({
-    plot(bootstrap_it())
-  })
   output$pred1 = renderText(model1pred())
   output$year1 = renderText(input$slider2)
   output$sumyr = renderText(yearselect())
+  
+  output$plot2 <- renderPlot({
+    plot(bootstrap_it())
+  })
 
+  observeEvent(input$show, {
+    showModal(modalDialog(
+      title = "About Murder/Manslaughter Application",
+      tabPanel("Reference", 
+               tags$iframe(style="height:400px; width:100%; scrolling=yes", 
+                           src="https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf")
+      ),
+      easyClose = TRUE,
+      footer = NULL
+    ))
+  })
   
 })
