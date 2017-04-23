@@ -63,8 +63,8 @@ shinyServer(function(input, output) {
     showModal(modalDialog(
       title = "About Murder/Manslaughter Application",
       tabPanel("Reference", 
-               tags$iframe(style="height:400px; width:100%; scrolling=yes", 
-                           src="https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf")
+               tags$iframe(style="width:100%; scrolling=yes", 
+                           src="https://github.com/carmensandiego/JHU_DataVis_Data/blob/master/VAMurderHelp.pdf")
       ),
       easyClose = TRUE,
       footer = NULL
