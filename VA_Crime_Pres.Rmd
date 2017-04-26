@@ -1,0 +1,37 @@
+---
+title: "Analysis of Estimated Robbery in Virginia"
+author: "Lane Eyestone"
+date: "April 23, 2017"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Uniform Crime Reporting (UCR)
+This app is a demonstration of the analysis that can be done with a sample of the data available through the FBI's Uniform Crime Reporting database (https://www.ucrdatatool.gov/). 
+
+
+## UCR Statistics Available
+There are many statistics available in the UCR database that can be correlated to perform a comprehensive analysis grouped by states. Definitions for each of the fields can be found here: https://www.ucrdatatool.gov/offenses.cfm
+
+- Fields used in this app:
+```{r, comment=""}
+VA_Murder <- read.csv(url("https://raw.githubusercontent.com/carmensandiego/JHU_DataVis_Data/master/CrimeStatebyState.csv"), skip=8, header=TRUE, nrows=55)   
+
+colnames(VA_Murder)
+```
+## Correlation Matrix for VA UCR Stats
+
+- The thinner the ellipse, the more correlated the variables are between each other
+```{r}
+library(corrplot)
+M <- cor(VA_Murder[,3:8])
+corrplot(M, method = "ellipse", type = "upper")
+```
+
+## Future Development
+- Include choropleth maps for all states by year for various correlated statistics
+- Develop an approach for evaluating crime rates in addition to estimated values
+- Include population and housing statistics by state to gauge crime rate trends

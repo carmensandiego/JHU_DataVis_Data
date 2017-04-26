@@ -13,7 +13,7 @@ library(shiny)
 shinyUI(fluidPage(
   
   # Application title
-  titlePanel("Estimated Murder and Non Negligent Manslaughter in Virginia"),
+  titlePanel("Estimated Robberies in Virginia"),
   
   # Sidebar with a slider input for number of bins 
   sidebarLayout(
@@ -41,11 +41,11 @@ shinyUI(fluidPage(
     # Show a plot of the generated distribution
     mainPanel(
       plotOutput("plot1"),
-      h3("Predicted Murder/Manslaughter Estimate from Model 1:"), 
+      h3("Predicted Robbery Estimate from Model:"), 
       textOutput("pred1"),
       h3("Year:"),
       textOutput("year1"),
-      h3("Total Estimated Murders and Non Negligent Manslaughter (from 1960 to selected year):"),
+      h3("Total Estimated Robbery (from 1960 to selected year):"),
       textOutput("sumyr"),
       plotOutput("plot2")
       # tabsetPanel(
